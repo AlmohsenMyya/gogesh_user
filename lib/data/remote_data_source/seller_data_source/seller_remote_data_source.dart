@@ -8,7 +8,7 @@ import '../../response/seller/seller_profile_response.dart';
 part 'seller_remote_data_source.g.dart';
 
 @RestApi(
-  baseUrl: "https://api.gogesh.com/api/v1",
+  baseUrl: "https://progressmaxonline.com/api/v1",
   parser: Parser.FlutterCompute,
 )
 abstract class SellerDataSource {

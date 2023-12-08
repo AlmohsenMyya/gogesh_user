@@ -10,7 +10,7 @@ import '../../../core/paginated/notificaton_paginated/notification_paginated.dar
 part 'notifications_data_source.g.dart';
 
 @RestApi(
-  baseUrl: "https://api.gogesh.com/api/v1",
+  baseUrl: "https://progressmaxonline.com/api/v1",
   parser: Parser.FlutterCompute,
 )
 abstract class NotificationsRemoteDataSource {

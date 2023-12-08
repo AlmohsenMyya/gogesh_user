@@ -12,7 +12,7 @@ import '../../../domain/request/chat/support_request.dart';
 part 'chat_remote_data_source.g.dart';
 
 @RestApi(
-  baseUrl: "https://api.gogesh.com/api/v1",
+  baseUrl: "https://progressmaxonline.com/api/v1",
   parser: Parser.FlutterCompute,
 )
 abstract class ChatRemoteDataSource {

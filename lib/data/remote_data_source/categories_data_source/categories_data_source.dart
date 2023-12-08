@@ -19,7 +19,7 @@ import '../../../domain/entities/sector_entity.dart';
 part 'categories_data_source.g.dart';
 
 @RestApi(
-  baseUrl: "https://api.gogesh.com/api/v1",
+  baseUrl: "https://progressmaxonline.com/api/v1",
   parser: Parser.FlutterCompute,
 )
 abstract class CategoriesRemoteDataSource {

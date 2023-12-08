@@ -13,7 +13,7 @@ class _OffersRemoteDataSource implements OffersRemoteDataSource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://api.gogesh.com/api/v1';
+    baseUrl ??= 'https://progressmaxonline.com/api/v1';
   }
 
   final Dio _dio;

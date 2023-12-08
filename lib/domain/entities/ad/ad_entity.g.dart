@@ -19,11 +19,29 @@ _$_Ad _$$_AdFromJson(Map<String, dynamic> json) => _$_Ad(
           ? null
           : DateTime.parse(json['created_at'] as String),
       description: json['description'] as String,
-      price: (json['price'] as num).toDouble(),
-      views: json['views'] as int?,
+      price: _parseDouble(json['price'] ?? "0" )!,
+      views: int.tryParse(json['views'] ?? ''),
       url: json['url'] as String?,
     );
+double? _parseDouble(dynamic value) {
+      if (value is int) {
+            return value.toDouble();
+      } else if (value is String) {
+            return double.tryParse(value);
+      } else {
+            return null;
+      }
+}
 
+int? _parseInt(dynamic value) {
+      if (value is int) {
+            return value;
+      } else if (value is String) {
+            return int.tryParse(value);
+      } else {
+            return null;
+      }
+}
 Map<String, dynamic> _$$_AdToJson(_$_Ad instance) => <String, dynamic>{
       'id': instance.id,
       'seller_id': instance.sellerId,
