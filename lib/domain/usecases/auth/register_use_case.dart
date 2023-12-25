@@ -44,6 +44,7 @@ class RegisterUseCase extends UseCase<String, RegisterCustomer> {
       await localDataSource.setValue<ProfileEntity>(
           LocalDataKeys.profile,
           ProfileEntity(
+              gender: profile['gender'],
               id: profile["id"],
               firstName: profile["first_name"],
               createdAt: profile["created_at"],
@@ -90,9 +91,10 @@ class RegisterUseCase extends UseCase<String, RegisterCustomer> {
           error: Exceptions.other(ex.response?.data["message"]));
     } on HttpException catch (ex) {
       return Result.failure(error: Exceptions.other(ex.message));
-    } catch (e) {
-      return const Result.failure(
-          error: Exceptions.other("something_went_wrong"));
     }
+  // catch (e) {
+    //   return const Result.failure(
+    //       error: Exceptions.other("something_went_wrong"));
+    // }
   }
 }

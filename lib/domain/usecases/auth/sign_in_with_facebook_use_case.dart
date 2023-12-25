@@ -38,6 +38,7 @@ class SignInFacebookUseCase extends UseCase<UserCredential, NoParams> {
       await localDataSource.setValue<ProfileEntity>(
           LocalDataKeys.profile,
           ProfileEntity(
+              gender: profile['gender'],
               id: profile["id"],
               firstName: profile["first_name"],
               createdAt: profile["created_at"],

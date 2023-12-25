@@ -17,6 +17,7 @@ class ProfileEntityAdapter extends TypeAdapter<ProfileEntity> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ProfileEntity(
+      gender: (fields[12]  as bool?).toString(),
       country: fields[9] as String?,
       city: fields[10] as String?,
       region: fields[11] as String?,
@@ -82,6 +83,7 @@ class ProfileEntityAdapter extends TypeAdapter<ProfileEntity> {
 
 ProfileEntity _$ProfileEntityFromJson(Map<String, dynamic> json) =>
     ProfileEntity(
+      gender:  json['gender'] as String?,
       country: json['country'] as String?,
       city: json['city'] as String?,
       region: json['region'] as String?,

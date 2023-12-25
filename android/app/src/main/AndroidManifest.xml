@@ -10,7 +10,7 @@
         <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
     </queries>
    <application
-        android:label="Gogesh"
+        android:label="user gogesh"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

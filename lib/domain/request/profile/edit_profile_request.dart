@@ -12,7 +12,7 @@ class EditProfileRequest extends Params {
       required this.email,
       required this.phone,
       required this.countryId,
-      //  required this.gender,
+       required this.gender,
       required this.regionId,
       required this.region,
       required this.firstname,
@@ -29,7 +29,7 @@ class EditProfileRequest extends Params {
   final String? email;
   final String? phone;
 
-  // final int? gender;
+  final String? gender;
   final String? country;
   final String? city;
   final String? region;

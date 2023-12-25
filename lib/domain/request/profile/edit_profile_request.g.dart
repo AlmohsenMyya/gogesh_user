@@ -8,6 +8,7 @@ part of 'edit_profile_request.dart';
 
 EditProfileRequest _$EditProfileRequestFromJson(Map<String, dynamic> json) =>
     EditProfileRequest(
+          gender: json['gender'] as String?,
       city: json['city'] as String?,
       cityId: json['city_id'] as int?,
       country: json['country'] as String?,
@@ -22,6 +23,7 @@ EditProfileRequest _$EditProfileRequestFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$EditProfileRequestToJson(EditProfileRequest instance) =>
     <String, dynamic>{
+      'gender' : instance.gender == 0 ? "Male" : "Female" ,
       'firstname': instance.firstname,
       'lastname': instance.lastname,
       'country_id': instance.countryId,

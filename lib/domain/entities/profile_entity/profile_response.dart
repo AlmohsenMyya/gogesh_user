@@ -19,6 +19,7 @@ class ProfileResponse with _$ProfileResponse {
 class ProfileEntity {
   const ProfileEntity(
       {required this.country,
+        required this.gender,
       required this.city,
       required this.region,
       required this.id,
@@ -60,6 +61,8 @@ class ProfileEntity {
   final String? region;
   @HiveField(12)
   final bool? completed;
+  @HiveField(13)
+  final String? gender;
 
   factory ProfileEntity.fromJson(Map<String, dynamic> json) =>
       _$ProfileEntityFromJson(json);

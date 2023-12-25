@@ -34,6 +34,7 @@ import '../../domain/usecases/location/determine_location_use_case.dart';
 import '../blocs/dialog_ads/dialog_ad_bloc.dart';
 import '../blocs/main/bottom_nav_cubit.dart';
 import '../blocs/main/side_menu_cubit.dart';
+import '../blocs/profile/profile_bloc.dart';
 import '../widgets/auth_builder.dart';
 import '../widgets/costume_button.dart';
 
@@ -349,7 +350,11 @@ class MainScreen extends StatelessWidget {
                                         });
                                     break;
                                   case 4:
-                                    context.goNamed(Routes.me.name,
+
+                           context.read<ProfileBloc>().add(
+                                const ProfileEvent.loadedProfile(),
+                                );
+                           context.goNamed(Routes.me.name,
                                         queryParameters: {"name": "me"});
                                     break;
                                 }

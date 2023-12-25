@@ -38,6 +38,7 @@ class EditProfileScreen extends HookWidget {
   Widget build(BuildContext context) {
     final regionController = useTextEditingController();
     final cityController = useTextEditingController();
+    String ? genderController = "Male" ;
     final firstNameController = useTextEditingController();
     final lastNameController = useTextEditingController();
     final countryController = useTextEditingController();
@@ -75,7 +76,7 @@ class EditProfileScreen extends HookWidget {
               countryController.text = value.data.country ?? '';
               regionController.text = value.data.region ?? '';
               lastNameController.text = value.data.lastName!;
-
+              genderController = value.data.gender ;
               firstNameController.text = value.data.firstName!;
               emailController.text = value.data.email!;
               phoneController.text = value.data.phone!;
@@ -778,7 +779,7 @@ class EditProfileScreen extends HookWidget {
                                           "${phoneNumber?.isoCode}-${phoneNumber?.dialCode}-${phoneController.text.replaceAll(" ", "")}",
                                       countryId: countryId,
                                       regionId: regionId,
-                                      region: regionController.text,
+                                      region: regionController.text, gender: genderController ,
                                     );
 
                                     context.read<ProfileBloc>().add(
