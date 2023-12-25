@@ -212,12 +212,12 @@ class SideMenuWidget extends StatelessWidget {
                   height: 10,
                 ),
                 SideMenuItem(
-                  onTap: () {
-                    GoogleSignIn().signOut();
-                    FacebookAuth.instance.logOut();
-                    sl<LocalDataSource>().clear();
-                    sl<Dio>().options.headers.remove("Authorization");
+                  onTap: () async {
                     context.goNamed(Routes.auth.name);
+                    await sl<LocalDataSource>().clear();
+                    await sl<Dio>().options.headers.remove("Authorization");
+                    await GoogleSignIn().signOut();
+                    await FacebookAuth.instance.logOut();
                   },
                   title: "logout",
                   icon: const Icon(Icons.logout),
