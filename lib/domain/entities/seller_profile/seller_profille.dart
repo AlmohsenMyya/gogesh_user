@@ -59,7 +59,7 @@ class WorkDays {
 
   factory WorkDays.fromJson(Map<String, dynamic> json) {
     return WorkDays(
-      day: json["day"],
+      day: int.tryParse(json["day"] as String??"0")!,
       from: json["from"],
       to: json["to"],
       name: json['name'],

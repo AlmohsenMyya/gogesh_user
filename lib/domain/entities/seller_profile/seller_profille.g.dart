@@ -21,10 +21,10 @@ _$_SellerProfile _$$_SellerProfileFromJson(Map<String, dynamic> json) =>
       commercialActivity: json['commercial_activity'] as String?,
       address: json['commercial_activity_address'] as String?,
       services: (json['services'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => (e as Map<String, dynamic>).toString())
           .toList(),
       sections: (json['sections'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => (e as Map<String, dynamic>).toString())
           .toList(),
       active: json['active'] as bool,
       socialAccounts: (json['commercial_activity_social'] as List<dynamic>?)
