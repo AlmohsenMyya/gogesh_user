@@ -273,7 +273,9 @@ class MainScreen extends StatelessWidget {
                         onPressed: () {
                           context.pushNamed(Routes.conversationsScreen.name);
                         },
-                        icon: Text('m2kk', style: TextStyle(color: Colors.red)),
+                        icon: const Icon(
+                          Ionicons.chatbubble_ellipses_outline,
+                        ),
                         // Consumer(
                         //   builder: (BuildContext context, WidgetRef ref,
                         //       Widget? child) {
