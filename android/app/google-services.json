@@ -1,49 +1,63 @@
 {
   "project_info": {
-    "project_number": "423520422471",
-    "project_id": "gogesh-74c2c",
-    "storage_bucket": "gogesh-74c2c.appspot.com"
+    "project_number": "1041806983771",
+    "project_id": "app4-24540",
+    "storage_bucket": "app4-24540.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:423520422471:android:39b7ec4bcd9207e4c8ff62",
+        "mobilesdk_app_id": "1:1041806983771:android:85de1a1fa5e6c098d3f57e",
         "android_client_info": {
-          "package_name": "com.gogesh.users"
+          "package_name": "com.gogesh.seller"
         }
       },
       "oauth_client": [
         {
-          "client_id": "423520422471-249pfgb9c7nn66511odolbv28slg5957.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.gogesh.users",
-            "certificate_hash": "be07b8bb3894d1db1310b4807f08dc0ee5486975"
-          }
-        },
-        {
-          "client_id": "423520422471-q1bsiotagjcj7qe7ke6m6so3s61lcjjr.apps.googleusercontent.com",
+          "client_id": "1041806983771-m3s4ih0kq7bg26ckljmcnimgk3ce4ig6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDf1__460Nq8LNCz_jCREriELRAGZMMHfc"
+          "current_key": "AIzaSyCMXJi_ak7r9MSpiqMy_H5l4rhP8zIXVyo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "423520422471-61mtq2miv6a20cr11p74of1h0kdfcogd.apps.googleusercontent.com",
+              "client_id": "1041806983771-ej6apjgorv6ttg8dt5atfslqiffm2u20.apps.googleusercontent.com",
               "client_type": 3
-            },
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041806983771:android:d6e3735f2b928d10d3f57e",
+        "android_client_info": {
+          "package_name": "com.gogesh.users"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041806983771-m3s4ih0kq7bg26ckljmcnimgk3ce4ig6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMXJi_ak7r9MSpiqMy_H5l4rhP8zIXVyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
             {
-              "client_id": "423520422471-6cfqoh5vsn8o4a2m01tutjc0euqrks1t.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.gogesh.users"
-              }
+              "client_id": "1041806983771-ej6apjgorv6ttg8dt5atfslqiffm2u20.apps.googleusercontent.com",
+              "client_type": 3
             }
           ]
         }

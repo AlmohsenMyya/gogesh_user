@@ -26,7 +26,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -50,21 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDf1__460Nq8LNCz_jCREriELRAGZMMHfc',
-    appId: '1:423520422471:android:39b7ec4bcd9207e4c8ff62',
-    messagingSenderId: '423520422471',
-    projectId: 'gogesh-74c2c',
-    storageBucket: 'gogesh-74c2c.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAFEItGc2ho7qVBz4sxe6_YOC_IXt2Svp4',
-    appId: '1:423520422471:ios:febd0160f82e051dc8ff62',
-    messagingSenderId: '423520422471',
-    projectId: 'gogesh-74c2c',
-    storageBucket: 'gogesh-74c2c.appspot.com',
-    androidClientId: '423520422471-249pfgb9c7nn66511odolbv28slg5957.apps.googleusercontent.com',
-    iosClientId: '423520422471-6cfqoh5vsn8o4a2m01tutjc0euqrks1t.apps.googleusercontent.com',
-    iosBundleId: 'com.gogesh.users',
+    apiKey: 'AIzaSyCMXJi_ak7r9MSpiqMy_H5l4rhP8zIXVyo',
+    appId: '1:1041806983771:android:d6e3735f2b928d10d3f57e',
+    messagingSenderId: '1041806983771',
+    projectId: 'app4-24540',
+    storageBucket: 'app4-24540.appspot.com',
   );
 }

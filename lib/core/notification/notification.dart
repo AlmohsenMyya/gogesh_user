@@ -11,6 +11,8 @@ import '../../main.dart';
 class NotificationSetUp {
   static init() async {
     FirebaseMessaging messaging = FirebaseMessaging.instance;
+    String? fcmToken = await messaging.getToken();
+    print("hjbjbjbj $fcmToken");
     if (Platform.isIOS) {
       messaging.requestPermission(
           badge: true, alert: true, sound: true, announcement: true);
