@@ -38,30 +38,30 @@ part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final SignInGoogleUseCase signInGoogleUseCase;
-  final SignInFacebookUseCase signInFacebookUseCase;
-  final SignInWithAppleUseCase signInWithAppleUseCase;
-  final RegisterUseCase registerUseCase;
-  final LoginUseCase loginUseCase;
-  final CompleteProfileUseCase completeProfileUseCase;
-  final CheckPasswordUseCase checkPasswordUseCase;
-  final ResetPasswordUseCase resetPasswordUseCase;
-  final ForgetPasswordUseCase forgetPasswordUseCase;
-  final ConfirmEmailUseCase confirmEmailUseCase;
-  final ResendEmailConfirmationCodeUseCase resendEmailConfirmationCodeUseCase;
+  final SignInGoogleUseCase? signInGoogleUseCase;
+  final SignInFacebookUseCase? signInFacebookUseCase;
+  final SignInWithAppleUseCase? signInWithAppleUseCase;
+  final RegisterUseCase? registerUseCase;
+  final LoginUseCase? loginUseCase;
+  final CompleteProfileUseCase? completeProfileUseCase;
+  final CheckPasswordUseCase? checkPasswordUseCase;
+  final ResetPasswordUseCase? resetPasswordUseCase;
+  final ForgetPasswordUseCase? forgetPasswordUseCase;
+  final ConfirmEmailUseCase? confirmEmailUseCase;
+  final ResendEmailConfirmationCodeUseCase? resendEmailConfirmationCodeUseCase;
 
   AuthBloc({
-    required this.signInGoogleUseCase,
-    required this.signInFacebookUseCase,
-    required this.signInWithAppleUseCase,
-    required this.confirmEmailUseCase,
-    required this.completeProfileUseCase,
-    required this.registerUseCase,
-    required this.loginUseCase,
-    required this.checkPasswordUseCase,
-    required this.forgetPasswordUseCase,
-    required this.resetPasswordUseCase,
-    required this.resendEmailConfirmationCodeUseCase,
+     this.signInGoogleUseCase,
+     this.signInFacebookUseCase,
+     this.signInWithAppleUseCase,
+     this.confirmEmailUseCase,
+     this.completeProfileUseCase,
+     this.registerUseCase,
+     this.loginUseCase,
+     this.checkPasswordUseCase,
+     this.forgetPasswordUseCase,
+     this.resetPasswordUseCase,
+     this.resendEmailConfirmationCodeUseCase,
   }) : super(const AuthState.initial()) {
     on<AuthEvent>(_mapEventToState);
   }
@@ -70,7 +70,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return event.map(
       forgetpassword: (data) async {
         emit(const AuthState.loading());
-        var result = await forgetPasswordUseCase(data.request);
+        var result = await forgetPasswordUseCase!(data.request);
         return emit(result.when(
             failure: (error) =>
                 AuthState.error(error: error?.localizedErrorMessage),
@@ -78,7 +78,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       checkPassword: (data) async {
         emit(const AuthState.loading());
-        var result = await checkPasswordUseCase(data.request);
+        var result = await checkPasswordUseCase!(data.request);
         return emit(result.when(
             failure: (error) =>
                 AuthState.error(error: error?.localizedErrorMessage),
@@ -86,7 +86,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       resetpassword: (data) async {
         emit(const AuthState.loading());
-        var result = await resetPasswordUseCase(data.request);
+        var result = await resetPasswordUseCase!(data.request);
         return emit(result.when(
             failure: (error) =>
                 AuthState.error(error: error?.localizedErrorMessage),
@@ -94,7 +94,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       signUpGoogle: (social) async {
         emit(const AuthState.socialLoading());
-        var result = await signInGoogleUseCase(NoParams());
+        var result = await signInGoogleUseCase!(NoParams());
         return emit(result.when(
             failure: (error) =>
                 AuthState.error(error: error?.localizedErrorMessage),
@@ -102,7 +102,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       signUpFacebook: (value) async {
         emit(const AuthState.socialLoading());
-        var result = await signInFacebookUseCase(NoParams());
+        var result = await signInFacebookUseCase!(NoParams());
         return emit(result.when(
             failure: (error) =>
                 AuthState.error(error: error?.localizedErrorMessage),
@@ -110,7 +110,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       register: (request) async {
         emit(const AuthState.loading());
-        var result = await registerUseCase(request.request);
+        var result = await registerUseCase!(request.request);
         return emit(result.when(
             failure: (error) {
               return error!.maybeWhen(
@@ -125,7 +125,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       login: (request) async {
         emit(const AuthState.loading());
-        var result = await loginUseCase(request.request);
+        var result = await loginUseCase!(request.request);
         return emit(result.when(failure: (error) {
           return error!.maybeWhen(
               orElse: () => AuthState.error(error: error.localizedErrorMessage),
@@ -147,7 +147,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       completeProfile: (_CompleteProfile value) async {
         emit(const AuthState.loading());
-        var result = await completeProfileUseCase(value.request);
+        var result = await completeProfileUseCase!(value.request);
         return emit(result.when(
             failure: (error) {
               return error!.maybeWhen(
@@ -159,7 +159,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       confirmEmail: (value) async {
         emit(const AuthState.loading());
-        var result = await confirmEmailUseCase(
+        var result = await confirmEmailUseCase!(
             ConfirmEmailRequest(email: value.email, code: value.code));
         return emit(result.when(
             failure: (error) {
@@ -173,7 +173,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       resendEmailConfirmationCode: (value) async {
         emit(const AuthState.resendingEmail());
-        var result = await resendEmailConfirmationCodeUseCase(
+        var result = await resendEmailConfirmationCodeUseCase!(
           ResendEmailConfirmationCode(
             type: "customers",
             email: value.email,
@@ -191,7 +191,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       signUpApple: (_SignUpApple value) async {
         emit(const AuthState.socialLoading());
-        var result = await signInWithAppleUseCase(NoParams());
+        var result = await signInWithAppleUseCase!(NoParams());
         return emit(result.when(
             failure: (error) =>
                 AuthState.error(error: error?.localizedErrorMessage),

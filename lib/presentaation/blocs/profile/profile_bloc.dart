@@ -16,21 +16,21 @@ part 'profile_state.dart';
 part 'profile_bloc.freezed.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  final GetProfileUseCase getProfileUseCase;
-  final EditProfileUseCase editProfileUseCase;
+  final GetProfileUseCase? getProfileUseCase;
+  final EditProfileUseCase? editProfileUseCase;
   final ChangePasswordUseCase? changePasswordUseCase;
 
   ProfileBloc(
-      {required this.getProfileUseCase,
-      required this.editProfileUseCase,
-      required this.changePasswordUseCase})
+      { this.getProfileUseCase,
+       this.editProfileUseCase,
+       this.changePasswordUseCase})
       : super(const ProfileState.loading()) {
     on<ProfileEvent>((_mapEventToState));
   }
   FutureOr _mapEventToState(ProfileEvent event, Emitter<ProfileState> emit) {
     return event.map(loadedProfile: (_) async {
       emit(const ProfileState.loading());
-      var result = await getProfileUseCase(NoParams());
+      var result = await getProfileUseCase!(NoParams());
       emit(
         result.when(
             failure: (error) =>
@@ -39,7 +39,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       );
     }, editProfile: (value) async {
       emit(const ProfileState.loadingEdit());
-      var result = await editProfileUseCase(value.request);
+      var result = await editProfileUseCase!(value.request);
       return emit(
         result.when(
             failure: (error) =>

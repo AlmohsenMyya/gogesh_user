@@ -1,10 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dropdown_alert/alert_controller.dart';
+import 'package:flutter_dropdown_alert/model/data_alert.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-
+import 'package:commercial_directory_users/domain/request/profile/edit_password_request.dart';
+import '../../../app/locator.dart';
 import '../../../domain/request/profile/edit_password_request.dart';
 import '../../blocs/auth/auth_bloc.dart';
 import '../../blocs/profile/profile_bloc.dart';
@@ -21,7 +25,25 @@ class ChangePasswordScreen extends HookWidget {
     final oldPassword = useTextEditingController();
     final newPassword = useTextEditingController();
     final confirmNewPassword = useTextEditingController();
-    return Scaffold(
+    return BlocProvider(
+        create: (context) =>
+            AuthBloc(
+              resetPasswordUseCase: sl(),
+            ),
+        child: BlocListener<ProfileBloc, ProfileState>(
+        listener: (context, state) {
+      state.maybeWhen(
+        orElse: () {},
+        error: (error) {
+          AlertController.show("", error!, TypeAlert.error);
+        },
+        succes: () {
+          AlertController.show("", "msg", TypeAlert.success);
+          context.pop();
+        },
+      );
+    },
+    child: Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
@@ -72,7 +94,7 @@ class ChangePasswordScreen extends HookWidget {
               ),
               SizedBox(
                 width: double.infinity,
-                child: CostumeButton(child: BlocBuilder<AuthBloc, AuthState>(
+                child: CostumeButton(child: BlocBuilder<ProfileBloc, ProfileState>(
                   builder: (context, state) {
                     return state.maybeWhen(
                       orElse: () => const Text("edit").tr(),
@@ -83,7 +105,7 @@ class ChangePasswordScreen extends HookWidget {
                 ), onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     context.read<ProfileBloc>().add(ProfileEvent.changePassword(
-                            request: EditPasswordRequest(
+                        request: EditPasswordRequest(
                           newPassword: newPassword.text,
                           oldPassword: oldPassword.text,
                           newPasswordConfirmation: confirmNewPassword.text,
@@ -95,6 +117,7 @@ class ChangePasswordScreen extends HookWidget {
           ),
         ),
       ),
+    ),  ),
     );
   }
 }

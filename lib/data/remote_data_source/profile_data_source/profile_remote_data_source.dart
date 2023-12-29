@@ -26,7 +26,7 @@ abstract class ProfileRemoteDataSource {
     @Body() required EditProfileRequest body,
   });
 
-  @POST("auth/customer/updatePassword")
+  @POST("/auth/customer/updatePassword")
   Future<HttpResponse> changePassword({
     @Body() required EditPasswordRequest body,
   });
